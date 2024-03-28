@@ -19,14 +19,15 @@ class BFS:
         q.append(sourceNode)
 
         while q:
-            u = q.popleft()  # this will work as parent node
+            parentNode = q.popleft()  # this will work as parent node
             for v in range(nodeAmount):
                 if (
-                    graph[u][v] == 1 and visited[v] == 0):  # visit the child nodes v of parent node u
+                    graph[parentNode][v] == 1 and visited[v] == 0
+                ):  # visit the child nodes v of parent node u
                     visited[v] = 1
-                    level[v] = level[u] + 1
+                    level[v] = level[parentNode] + 1
                     q.append(v)
-            visited[u] = 2
+            visited[parentNode] = 2
 
         for i in range(nodeAmount):
             print("Node =", i, "Level =", level[i])
